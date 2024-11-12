@@ -17,7 +17,7 @@ import ForgotPassword from './ForgotPassword';
 import { GoogleIcon, SitemarkIcon } from './CustomIcons';
 import AppTheme from '../../shared-theme/AppTheme';
 import ColorModeSelect from '../../shared-theme/ColorModeSelect';
-import {loginAPI} from '../../Services/Login'
+import { loginAPI } from '../../services/loginService'
 
 
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -83,17 +83,13 @@ export default function SignIn(props) {
       return;
     }
     const data = new FormData(event.currentTarget);
-    
+
     const loginRequest = {
       userName: data.get('userName'),
       password: data.get('password')
-    } 
-
-    try{
-      await loginAPI(loginRequest)
-    } catch (error) {
-      console.error(error)
     }
+
+    await props.handleSubmit(loginRequest);
   };
 
   const validateInputs = () => {

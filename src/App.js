@@ -1,11 +1,10 @@
 import './App.css';
-import SignIn from './components/Login/SignIn'
+import AppRouter from './router/AppRouter';
 
 
 function App() {
   return (
-   <SignIn>
-   </SignIn>
+   <AppRouter></AppRouter>
   );
 }
 
