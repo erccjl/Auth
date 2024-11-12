@@ -14,11 +14,10 @@ import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
 import ForgotPassword from './ForgotPassword';
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
+import { GoogleIcon, SitemarkIcon } from './CustomIcons';
 import AppTheme from '../../shared-theme/AppTheme';
 import ColorModeSelect from '../../shared-theme/ColorModeSelect';
 import {loginAPI} from '../../Services/Login'
-import axios from 'axios';
 
 
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -90,11 +89,11 @@ export default function SignIn(props) {
       password: data.get('password')
     } 
 
-    await loginAPI(loginRequest)
-   /* axios.post("https://localhost:44328/API/Auth/Login", loginRequest)
-    .then(res => console.log(res)) 
-    .catch(err => console.log(err))*/
-
+    try{
+      await loginAPI(loginRequest)
+    } catch (error) {
+      console.error(error)
+    }
   };
 
   const validateInputs = () => {

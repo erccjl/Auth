@@ -9,7 +9,13 @@ const clientInstance = axios.create({
 clientInstance.interceptors.response.use((response) => {
     return response;
 }, (error) => {
-    ErrorToast(error.message);
+    if (error.message === "Network Error") {
+        ErrorToast("Error de red: Verifique su conexión a Internet");
+    } else if (error.response) {
+        ErrorToast(`Error ${error.response.status}: ${error.response.data.message || "Ocurrió un error inesperado"}`);
+    } else {
+        ErrorToast("Ocurrió un error inesperado. Inténtelo de nuevo más tarde.");
+    }
     return Promise.reject(error);
 })
 

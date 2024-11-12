@@ -1,14 +1,12 @@
-import {urls} from '../Constants/api'
+import { urls } from '../Constants/api'
 import clientInstance from '../client';
+import { SuccessToast } from '../components/Toast/Toast';
 
-export const loginAPI = (loginRequest) => async () => {
-    console.log("entro al evento")
+export const loginAPI = async (loginRequest) => {
     const response = await clientInstance
         .post(urls.loginAPI, loginRequest);
 
-        console.log("Usuario autenticado")
-
-        if(response.status == 200) {
-            console.log("Usuario autenticado")
-        }
+    if (response.status == 200) {
+        SuccessToast("Usuario autenticado");
+    }
 }
