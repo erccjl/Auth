@@ -1,4 +1,4 @@
-import { urls } from '../constants/api'
+import { urls } from '../Constants/api'
 import clientInstance from '../client';
 import { SuccessToast } from '../components/Toast/Toast';
 
